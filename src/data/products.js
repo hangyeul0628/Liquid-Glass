@@ -1,3 +1,5 @@
+const base = import.meta.env.BASE_URL;
+
 export const products = [
   {
     id: 1,
@@ -9,8 +11,8 @@ export const products = [
     rating: 4.9,
     reviews: 428,
     tags: ['BEST', 'NEW'],
-    imgDefault: '/images/new_best1.jpg',
-    imgHover: '/images/new_best1.jpg',
+    imgDefault: `${base}images/new_best1.jpg`,
+    imgHover: `${base}images/new_best1.jpg`,
   },
   {
     id: 2,
@@ -22,8 +24,8 @@ export const products = [
     rating: 4.8,
     reviews: 182,
     tags: ['BEST'],
-    imgDefault: '/images/new_best2.jpg',
-    imgHover: '/images/new_best2.jpg',
+    imgDefault: `${base}images/new_best2.jpg`,
+    imgHover: `${base}images/new_best2.jpg`,
   },
   {
     id: 3,
@@ -35,8 +37,8 @@ export const products = [
     rating: 4.9,
     reviews: 315,
     tags: ['BEST'],
-    imgDefault: '/images/new_best3.jpg',
-    imgHover: '/images/new_best3.jpg',
+    imgDefault: `${base}images/new_best3.jpg`,
+    imgHover: `${base}images/new_best3.jpg`,
   },
   {
     id: 4,
@@ -48,7 +50,7 @@ export const products = [
     rating: 4.7,
     reviews: 94,
     tags: ['NEW'],
-    imgDefault: '/images/clear_glass_skin.png',
+    imgDefault: `${base}images/clear_glass_skin.png`,
     imgHover: 'https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?q=80&w=600&auto=format&fit=crop',
   },
   {
@@ -61,8 +63,8 @@ export const products = [
     rating: 4.8,
     reviews: 223,
     tags: ['BEST'],
-    imgDefault: '/images/trial_kit_banner.png',
-    imgHover: '/images/trial_kit_banner.png',
+    imgDefault: `${base}images/trial_kit_banner.png`,
+    imgHover: `${base}images/trial_kit_banner.png`,
   },
   {
     id: 6,
@@ -74,8 +76,8 @@ export const products = [
     rating: 4.6,
     reviews: 78,
     tags: [],
-    imgDefault: '/images/clinical_test_banner.png',
-    imgHover: '/images/clinical_test_banner.png',
+    imgDefault: `${base}images/clinical_test_banner.png`,
+    imgHover: `${base}images/clinical_test_banner.png`,
   },
   {
     id: 7,
@@ -87,7 +89,7 @@ export const products = [
     rating: 4.8,
     reviews: 154,
     tags: [],
-    imgDefault: '/images/hydro_barrier_cleaner.png',
+    imgDefault: `${base}images/hydro_barrier_cleaner.png`,
     imgHover: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=600&auto=format&fit=crop',
   },
   {
@@ -100,7 +102,7 @@ export const products = [
     rating: 4.9,
     reviews: 188,
     tags: ['NEW'],
-    imgDefault: '/src/assets/images/hydration_boost_essence.png',
-    imgHover: '/src/assets/images/hydration_boost_essence.png',
+    imgDefault: `${base}images/hydration_boost_essence.png`,
+    imgHover: `${base}images/hydration_boost_essence.png`,
   }
 ];
