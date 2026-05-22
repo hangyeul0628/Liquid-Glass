@@ -376,7 +376,7 @@ export default function HeroSection() {
       {/* Background Product Video */}
       <div className="hero-bg-image-container">
         <video
-          src="/MAIN-V.mp4"
+          src={`${import.meta.env.BASE_URL}MAIN-V.mp4`}
           className="hero-bg-product-video"
           autoPlay
           loop

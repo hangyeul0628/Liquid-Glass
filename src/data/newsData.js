@@ -1,3 +1,5 @@
+const base = import.meta.env.BASE_URL;
+
 export const newsItems = [
   {
     id: 1,
@@ -6,7 +8,7 @@ export const newsItems = [
     summary: '피부 본연의 맑고 투명함을 깨우는 Re:Glass 스킨케어 3종 체험 키트를 지금 바로 특별한 혜택으로 경험해 보세요.',
     content: 'Re:Glass의 공식 브랜드 런칭을 기념하여 독자적인 장벽 리사이클 포뮬러를 최초로 경험해보실 수 있는 3일 체험 리추얼 키트를 무상 배포합니다.\n\n해당 키트는 피부 속 보습 잠금을 완성하는 토너(30ml), 부스팅 에센스(20ml), 그리고 24시간 철통 보습 장벽을 쌓아주는 시그니처 앰플 크림(15ml)의 3단계 맞춤형 스킨케어로 구성되어 있습니다. 바쁘고 지친 직장인의 거칠어진 피부 결을 유리알처럼 반짝이고 견고하게 코팅해주는 특별한 순간을 경험해보세요. 한정 수량 1,000세트가 소진되면 이벤트는 자동 종료됩니다.',
     date: '2026.05.20 - 2026.06.20',
-    image: '/images/trial_kit_banner.png',
+    image: `${base}images/trial_kit_banner.png`,
     badgeClass: 'badge-promotion',
     ctaText: '3일 체험 키트 무료 신청하기'
   },
@@ -17,7 +19,7 @@ export const newsItems = [
     summary: '독자적인 Liquid Glass™ 수분 포뮬러 기술로 선사하는 놀라운 장벽 리빌딩 효과와 피부 속 수막 보습 잠금 기술을 입증했습니다.',
     content: '국내 공인 피부과학 임상평가 전문기관을 통해 성인 여성 30명을 대상으로 4주간 진행된 Re:Glass 앰플 크림 오리지널의 유효성 평가 결과, 피부 표면 장벽의 미세한 균열 개선 및 수분 보유력 향상 효과가 과학적으로 입증되었습니다.\n\n단 1회 도포만으로도 손실되었던 수분 보유막이 240% 이상 즉각적으로 급증하였으며, 24시간 혹독한 냉난방 환경 아래서도 99.8%에 달하는 투명 장벽 지속 지수를 달성하였습니다. 또한 인체 피부 일차 자극 테스트를 자극 지수 0.00(무자극)으로 통과하여 거칠고 균열이 생겨 예민해진 피부에도 편안하게 사용할 수 있는 안전한 리커버리 솔루션임을 검증 완료했습니다.',
     date: '2026.05.15',
-    image: '/images/clinical_test_banner.png',
+    image: `${base}images/clinical_test_banner.png`,
     badgeClass: 'badge-news',
     ctaText: '베스트셀러 제품 보러가기'
   },
@@ -28,7 +30,7 @@ export const newsItems = [
     summary: '물과 빛이 만들어내는 영롱한 치유의 공간, Re:Glass 플래그십 쇼룸의 프라이빗 오프닝 멤버십 데이에 당신을 초대합니다.',
     content: '물방울의 유기적인 부드러움과 크리스탈 유리의 단단하고 투명한 미학을 공간 예술로 구현해낸 Re:Glass 최초의 프리미엄 쇼룸, "유리알의 전당"이 서울 성수동에 오픈합니다.\n\n정식 오프닝에 앞서, 오랜 시간 브랜드를 사랑해주신 VIP 멤버분들을 위해 프라이빗 1:1 피부 분석 서비스와 리미티드 패키지 선공개 혜택을 제공하는 VIP 멤버스 프리뷰 위크를 진행합니다. 매 시간 제한된 소수의 인원만 입장하여 고즈넉한 휴식을 만끽할 수 있는 다도(茶道) 웰컴 리추얼 세션 및 미디어 아트 포토부스 도슨트 투어가 준비되어 있으니 사전 예약을 통해 특별한 감동의 시간을 누려보시기 바랍니다.',
     date: '2026.05.10 - 2026.05.31',
-    image: '/images/flagship_store_banner.png',
+    image: `${base}images/flagship_store_banner.png`,
     badgeClass: 'badge-event',
     ctaText: '프라이빗 프리뷰 사전 예약하기'
   }

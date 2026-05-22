@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import './CTASection.css';
 
+const base = import.meta.env.BASE_URL;
+
 const ctaOptions = [
   {
     id: 'button-option-1',
@@ -14,7 +16,7 @@ const ctaOptions = [
       name: '완벽한 유리알 장벽 크림 (정품 50ml)',
       price: 48000,
       discount: 0,
-      imgDefault: '/images/new_best1.jpg'
+      imgDefault: `${base}images/new_best1.jpg`
     }
   },
   {
@@ -28,7 +30,7 @@ const ctaOptions = [
       name: '글래스모피즘 3일 체험 키트',
       price: 0,
       discount: 0,
-      imgDefault: '/images/trial_kit_banner.png'
+      imgDefault: `${base}images/trial_kit_banner.png`
     }
   },
   {
@@ -42,7 +44,7 @@ const ctaOptions = [
       name: '내 피부에 맑은 투명도 박제 세트 (크림+에센스)',
       price: 89000,
       discount: 0,
-      imgDefault: '/images/clinical_test_banner.png'
+      imgDefault: `${base}images/clinical_test_banner.png`
     }
   },
 ];

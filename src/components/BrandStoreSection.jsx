@@ -12,7 +12,7 @@ export default function BrandStoreSection() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
-          <img src="/images/BRAND STORE 이미지.png" alt="Brand Flagship Store" className="brandstore-image" />
+          <img src={`${import.meta.env.BASE_URL}images/BRAND STORE 이미지.png`} alt="Brand Flagship Store" className="brandstore-image" />
         </motion.div>
         
         <motion.div 

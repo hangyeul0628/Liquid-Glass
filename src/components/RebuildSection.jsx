@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './RebuildSection.css';
 
+const base = import.meta.env.BASE_URL;
+
 export default function RebuildSection() {
   const scratchCanvasRef = useRef(null);
   const sectionRef = useRef(null);
@@ -18,7 +20,7 @@ export default function RebuildSection() {
   // Preload frosted overlay image
   useEffect(() => {
     const img = new Image();
-    img.src = '/images/frosted_rough_surface.png';
+    img.src = `${base}images/frosted_rough_surface.png`;
     img.onload = () => {
       frostedImageRef.current = img;
       setImageLoaded(true);
@@ -363,7 +365,7 @@ export default function RebuildSection() {
             {/* Beneath layer: Clear glass skin image with floating particles */}
             <div className="rebuild-clean-surface">
               <img 
-                src="/images/clear_glass_skin.png" 
+                src={`${base}images/clear_glass_skin.png`}
                 alt="Clear Radiant Glass Skin" 
                 className="clean-skin-image" 
               />

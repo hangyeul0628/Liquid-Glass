@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import './BestSellerSection.css';
 
+const base = import.meta.env.BASE_URL;
+
 export default function BestSellerSection({ onViewAll, onAddToCart }) {
   const bestSellers = [
     {
@@ -10,9 +12,9 @@ export default function BestSellerSection({ onViewAll, onAddToCart }) {
       price: 42000,
       discount: 10,
       tag: "BEST 1",
-      imgSrc: "/images/new_best1.jpg",
-      imgDefault: "/images/new_best1.jpg",
-      imgHover: "/images/new_best1.jpg"
+      imgSrc: `${base}images/new_best1.jpg`,
+      imgDefault: `${base}images/new_best1.jpg`,
+      imgHover: `${base}images/new_best1.jpg`
     },
     {
       id: 2,
@@ -21,9 +23,9 @@ export default function BestSellerSection({ onViewAll, onAddToCart }) {
       price: 55000,
       discount: 0,
       tag: "BEST 2",
-      imgSrc: "/images/new_best2.jpg",
-      imgDefault: "/images/new_best2.jpg",
-      imgHover: "/images/new_best2.jpg"
+      imgSrc: `${base}images/new_best2.jpg`,
+      imgDefault: `${base}images/new_best2.jpg`,
+      imgHover: `${base}images/new_best2.jpg`
     },
     {
       id: 3,
@@ -32,9 +34,9 @@ export default function BestSellerSection({ onViewAll, onAddToCart }) {
       price: 38000,
       discount: 20,
       tag: "BEST 3",
-      imgSrc: "/images/new_best3.jpg",
-      imgDefault: "/images/new_best3.jpg",
-      imgHover: "/images/new_best3.jpg"
+      imgSrc: `${base}images/new_best3.jpg`,
+      imgDefault: `${base}images/new_best3.jpg`,
+      imgHover: `${base}images/new_best3.jpg`
     }
   ];
 
