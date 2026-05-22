@@ -1,0 +1,249 @@
+/* =========================================
+   Navbar
+   ========================================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9000;
+  background: rgba(244, 247, 246, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(163, 198, 192, 0.2);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-md);
+  height: 64px;
+}
+
+/* 왼쪽: 브랜드명 */
+.navbar-brand {
+  font-family: var(--font-heading);
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  letter-spacing: -0.03em;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  text-decoration: none;
+}
+
+.navbar-brand:hover {
+  opacity: 1;
+  transform: translateY(-1px) scale(1.04);
+}
+
+.brand-text {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--point-color) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  transition: filter 0.4s ease;
+}
+
+.navbar-brand:hover .brand-text {
+  filter: drop-shadow(0 4px 12px rgba(74, 159, 144, 0.3));
+}
+
+.brand-prefix {
+  color: var(--point-color);
+  -webkit-text-fill-color: initial;
+}
+
+.brand-kr {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: rgba(30, 58, 52, 0.45);
+  margin-left: 4px;
+}
+
+/* 가운데: 메뉴 */
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  list-style: none;
+}
+
+.navbar-menu li a {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  letter-spacing: 0.02em;
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.3s ease;
+}
+
+.navbar-menu li a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--point-color);
+  transition: width 0.3s var(--ease-out-expo);
+}
+
+.navbar-menu li a:hover,
+.navbar-menu li a.active {
+  color: var(--point-color);
+}
+
+.navbar-menu li a:hover::after,
+.navbar-menu li a.active::after {
+  width: 100%;
+}
+
+/* 오른쪽: 검색 & 로그인 */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search-input {
+  width: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  color: var(--primary-color);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: width 0.4s var(--ease-out-expo),
+              padding 0.4s var(--ease-out-expo),
+              border-color 0.3s ease;
+}
+
+.search-wrapper.open .search-input {
+  width: 180px;
+  padding: 6px 8px;
+  border-bottom-color: var(--accent-color);
+}
+
+.search-input::placeholder {
+  color: rgba(30, 58, 52, 0.35);
+  font-size: 0.8rem;
+}
+
+.search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  color: var(--primary-color);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.search-btn:hover {
+  background: rgba(163, 198, 192, 0.2);
+  color: var(--point-color);
+}
+
+/* 장바구니 버튼 & 옥빛/오렌지 입체 배지 */
+.cart-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  color: var(--primary-color);
+  position: relative;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.cart-btn:hover {
+  background: rgba(163, 198, 192, 0.2);
+  color: var(--point-color);
+  transform: scale(1.05);
+}
+
+.cart-badge {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  background: linear-gradient(135deg, var(--point-color), #ff8d75); /* 포인트 코랄 그라디언트 */
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 800;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(255, 141, 117, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.cart-btn:hover .cart-badge {
+  transform: translateY(-2px) scale(1.1);
+}
+
+.login-btn {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--primary-color);
+  padding: 8px 20px;
+  border-radius: var(--radius-xl);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.login-btn:hover {
+  background: var(--point-color);
+  transform: translateY(-1px);
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+  .navbar-inner {
+    padding: 0 var(--space-sm);
+    height: 56px;
+  }
+
+  .navbar-brand {
+    font-size: 1.1rem;
+  }
+
+  .brand-kr {
+    display: none;
+  }
+
+  .navbar-menu {
+    display: none;
+  }
+
+  .search-wrapper.open .search-input {
+    width: 120px;
+  }
+}

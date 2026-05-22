@@ -1,0 +1,515 @@
+/* =========================================
+   SECTION 01: Hero Section
+   ========================================= */
+.hero-section {
+  flex-direction: column;
+  background: linear-gradient(
+    160deg,
+    var(--bg-color) 0%,
+    #eaf2ef 30%,
+    #dce8e4 60%,
+    var(--bg-color) 100%
+  );
+  padding: var(--space-lg) var(--space-md);
+  perspective: 1000px;
+}
+
+/* Background Orbs */
+.hero-bg-orbs {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+}
+
+.hero-bg-orb.orb-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--accent-color), transparent);
+  top: -10%;
+  right: -5%;
+  animation: floatOrb1 12s ease-in-out infinite;
+}
+
+.hero-bg-orb.orb-2 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, var(--point-color), transparent);
+  bottom: 10%;
+  left: -5%;
+  animation: floatOrb2 15s ease-in-out infinite;
+}
+
+.hero-bg-orb.orb-3 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(163, 198, 192, 0.6), transparent);
+  top: 40%;
+  left: 50%;
+  animation: floatOrb3 10s ease-in-out infinite;
+}
+
+@keyframes floatOrb1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-30px, 30px) scale(1.1); }
+}
+
+@keyframes floatOrb2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -20px) scale(1.05); }
+}
+
+@keyframes floatOrb3 {
+  0%, 100% { transform: translate(-50%, 0) scale(1); }
+  50% { transform: translate(-50%, -20px) scale(1.15); }
+}
+
+/* Background Image Container */
+.hero-bg-image-container {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-bg-product-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.95; /* 영상을 선명하게 다 띄우기 위해 오파시티 극대화 */
+  filter: saturate(0.95) contrast(1.02) brightness(0.98); /* 고유 색감 및 화질 보존 */
+  transform: scale(1.02); /* 경계선 커버 */
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(20, 38, 34, 0.22) 0%, /* 미묘한 중앙 다크 민트 안개 */
+    rgba(10, 24, 21, 0.55) 85%  /* 외곽으로 갈수록 다크 에메랄드 톤으로 감싸 텍스트 가독성 최상 확보 */
+  );
+}
+
+/* Rising Water Bubbles (Hybrid Physical Engine) */
+.hero-bubbles-container {
+  position: absolute;
+  inset: 0;
+  z-index: 2; /* 3D Orb(2) 주변과 전면을 아우르기 위해 z-index 조정 */
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* 기본 물방울 공통 디자인 */
+.hero-bubble {
+  position: absolute;
+  bottom: -60px; /* 화면 밖 아래에서 스폰 */
+  left: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(163, 198, 192, 0.28) 40%,
+    rgba(255, 255, 255, 0.12) 70%,
+    transparent 100%
+  );
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    inset -3px -3px 8px rgba(163, 198, 192, 0.2),
+    0 6px 15px rgba(30, 58, 52, 0.06);
+  animation: bubbleWobble 6s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+}
+
+/* 물방울 표면 하이라이팅 광택 (기본) */
+.hero-bubble::after {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 25%;
+  height: 25%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  filter: blur(0.2px);
+}
+
+/* 대형 물방울: Orb 전면을 지나며 극강의 굴절을 선사하는 글래스모피즘 물방울 */
+.hero-bubble.bubble-large {
+  z-index: 4; /* Orb보다 한단계 앞에 배치 */
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(163, 198, 192, 0.3) 30%,
+    rgba(255, 255, 255, 0.15) 60%,
+    transparent 100%
+  );
+  border: 1.8px solid rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+  box-shadow: 
+    inset -4px -4px 12px rgba(163, 198, 192, 0.25),
+    0 12px 28px rgba(30, 58, 52, 0.08);
+  animation-duration: 5s; /* 출렁임 템포 다르게 */
+}
+
+/* 중형 물방울: 표준적인 입체 물방울 */
+.hero-bubble.bubble-medium {
+  z-index: 2;
+  animation-duration: 7s;
+}
+
+/* 소형 물방울: 뒤쪽 깊이감(Z-Depth) 연출용 */
+.hero-bubble.bubble-small {
+  z-index: 1;
+  border-width: 1px;
+  box-shadow: 
+    inset -1px -1px 4px rgba(163, 198, 192, 0.15),
+    0 2px 6px rgba(30, 58, 52, 0.04);
+  animation-duration: 9s;
+}
+
+/* 1. 액체형 출렁임(Wobble) 애니메이션: 유기적으로 구부러지는 모션 */
+@keyframes bubbleWobble {
+  0% {
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  }
+  30% {
+    border-radius: 46% 54% 48% 52% / 53% 47% 55% 45%;
+  }
+  60% {
+    border-radius: 54% 46% 52% 48% / 47% 53% 45% 55%;
+  }
+  100% {
+    border-radius: 48% 52% 46% 54% / 51% 49% 52% 48%;
+  }
+}
+
+/* 2. 마우스 궤적 물방울 (.trail-bubble) */
+.trail-bubble {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 35%,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(163, 198, 192, 0.32) 40%,
+    rgba(255, 255, 255, 0.15) 70%,
+    transparent 100%
+  );
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 
+    inset -3px -3px 8px rgba(163, 198, 192, 0.22),
+    0 6px 16px rgba(30, 58, 52, 0.06);
+  pointer-events: none;
+  z-index: 3; /* 배경(2)과 3D Orb 전면(4) 사이 레이어 배치 */
+  will-change: transform, opacity;
+  animation: bubbleWobble 5s ease-in-out infinite alternate;
+}
+
+.trail-bubble::after {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 25%;
+  height: 25%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  filter: blur(0.2px);
+}
+
+
+/* 3. 3D Orb 호버 반응 미세 기포 (.micro-bubble) */
+.micro-bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.65);
+  border: 0.8px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  z-index: 1; /* Orb의 뒤편/주변 스폰 */
+  will-change: transform, opacity;
+}
+
+/* Product Orb */
+.hero-product-wrapper {
+  position: relative;
+  z-index: 2;
+  margin-bottom: var(--space-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  animation: floatProduct 6s ease-in-out infinite;
+}
+
+.hero-product-orb {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg) rotateX(0deg) scale(1);
+  transition: transform 0.1s ease-out;
+}
+
+
+
+.orb-glass-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(163, 198, 192, 0.25) 30%,
+    rgba(255, 255, 255, 0.15) 60%,
+    rgba(163, 198, 192, 0.2) 100%
+  );
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 20px 60px rgba(30, 58, 52, 0.15),
+    inset 0 -20px 40px rgba(163, 198, 192, 0.15),
+    inset 0 20px 40px rgba(255, 255, 255, 0.35);
+}
+
+.orb-inner-glow {
+  position: absolute;
+  inset: 20%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(163, 198, 192, 0.15) 50%,
+    transparent 70%
+  );
+  animation: innerPulse 4s ease-in-out infinite;
+}
+
+.orb-glare {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.3) 40%,
+    transparent 70%
+  );
+  top: 25%;
+  left: 30%;
+  filter: blur(5px);
+  transition: left 0.3s ease-out, top 0.3s ease-out;
+}
+
+
+
+@keyframes microRise {
+  0% {
+    transform: translate(-50%, -50%) translate(0, 0) scale(0.3);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) translate(var(--tx), var(--ty)) scale(1);
+    opacity: 0;
+  }
+}
+
+.orb-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(163, 198, 192, 0.25);
+}
+
+.orb-ring.ring-1 {
+  inset: -20px;
+  animation: ringRotate 20s linear infinite;
+}
+
+.orb-ring.ring-2 {
+  inset: -40px;
+  border-style: dashed;
+  animation: ringRotate 30s linear infinite reverse;
+}
+
+.orb-label {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.orb-label-sub {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  margin-bottom: 4px;
+}
+
+.orb-label-main {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+@keyframes floatProduct {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes innerPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes ringRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Text Block (Clean & Minimalist Typography Overlay) */
+.hero-text-block {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  background: transparent; /* 유리 카드판 완전 제거 */
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
+  box-shadow: none;
+}
+
+.hero-tag {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300; /* 한결 또렷한 굵기 */
+  font-size: 0.85rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #a7f3d0; /* 선명하고 산뜻한 오팔 민트 */
+  margin-bottom: var(--space-md);
+  text-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.6), 
+    0 1px 2px rgba(0, 0, 0, 0.8); /* 다크 이중 섀도우로 영상 위 가독성 보장 */
+}
+
+.hero-headline {
+  font-family: var(--font-heading);
+  font-size: 2.35rem;
+  line-height: 1.55;
+  font-weight: 400; /* 가독성을 위한 최적의 두께 */
+  margin-bottom: var(--space-md);
+  color: #ffffff; /* 완전 무결한 크리스탈 화이트 */
+  text-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.7), 
+    0 1px 4px rgba(0, 0, 0, 0.9); /* 생생한 비디오 위에서 선명한 대비 완성 */
+}
+
+.hero-highlight {
+  background: linear-gradient(135deg, #a7f3d0, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5)); /* 그라데이션 시인성 보강 */
+}
+
+.hero-sub {
+  font-family: 'Noto Serif KR', serif; /* 기계적인 컴퓨터 글씨와 올드함을 완벽히 탈피한 현대적 럭셔리 세리프체 */
+  color: rgba(255, 255, 255, 0.9); 
+  font-size: 1.05rem; /* 시크함을 살린 미니멀한 크기 */
+  font-weight: 300; /* 극도로 얇고 세련된 웨이트 */
+  margin: 0 auto;
+  letter-spacing: 0.08em; /* 럭셔리 룩북 특유의 정돈되고 여유로운 자간 */
+  line-height: 1.8;
+  text-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.6),
+    0 1px 3px rgba(0, 0, 0, 0.85);
+}
+
+/* 극도로 얇고 풍경이 비치는 투명 타이포그래피 */
+.typography-transparent {
+  font-weight: 100 !important;
+  color: transparent;
+  -webkit-text-stroke: 1.2px rgba(255, 255, 255, 0.88); /* 스트로크 가시성 보강 */
+  text-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(255, 255, 255, 0.12);
+  mix-blend-mode: normal; /* 유리판이 없으므로 오버레이보다 일반 노출로 형태 보장 */
+  display: inline-block;
+  letter-spacing: -0.01em;
+}
+
+.hero-brand-watermark {
+  margin-top: var(--space-xl);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  font-size: 1.25rem;
+  letter-spacing: 0.6em;
+  color: transparent;
+  -webkit-text-stroke: 0.9px rgba(255, 255, 255, 0.65); /* 스트로크 가시성 보강 */
+  text-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.45),
+    0 0 10px rgba(255, 255, 255, 0.08);
+  mix-blend-mode: normal;
+  opacity: 0.82;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-left: 0.6em;
+  animation: fadeInWatermark 2s ease-out;
+}
+
+@keyframes fadeInWatermark {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 0.75; transform: scale(1); }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero-product-orb {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hero-product-wrapper {
+    margin-bottom: var(--space-md);
+  }
+
+  .hero-bg-orb.orb-1 {
+    width: 300px;
+    height: 300px;
+  }
+
+  .hero-bg-orb.orb-2 {
+    width: 200px;
+    height: 200px;
+  }
+}

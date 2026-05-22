@@ -1,0 +1,253 @@
+/* =========================================
+   SECTION 05: CTA Section
+   ========================================= */
+.cta-section {
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  padding: var(--space-xl) var(--space-md);
+  overflow: hidden;
+}
+
+.cta-bg-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(163, 198, 192, 0.3) 0%,
+    rgba(163, 198, 192, 0.1) 100%
+  );
+  transition: background 0.3s ease;
+}
+
+.cta-bg-orbs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cta-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.3;
+}
+
+.cta-orb-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--point-color), transparent);
+  top: 10%;
+  right: -5%;
+  animation: floatOrb2 14s ease-in-out infinite;
+}
+
+.cta-orb-2 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, var(--accent-color), transparent);
+  bottom: 5%;
+  left: -5%;
+  animation: floatOrb1 16s ease-in-out infinite;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl);
+  max-width: 1000px;
+  width: 100%;
+}
+
+.cta-header {
+  text-align: center;
+}
+
+.cta-tag {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--point-color);
+  margin-bottom: var(--space-sm);
+  padding: 6px 20px;
+  border: 1px solid rgba(255, 158, 128, 0.3);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 158, 128, 0.05);
+}
+
+.cta-headline {
+  margin-bottom: var(--space-sm);
+  line-height: 1.5;
+}
+
+.cta-headline-highlight {
+  background: linear-gradient(135deg, var(--point-color), #ff7a50);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cta-sub {
+  color: rgba(30, 58, 52, 0.5);
+  font-size: 1rem;
+}
+
+/* Option Cards */
+.cta-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  width: 100%;
+}
+
+.cta-option-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-lg) var(--space-md);
+  text-align: center;
+  transition: transform 0.4s var(--ease-out-expo),
+              box-shadow 0.4s var(--ease-out-expo);
+}
+
+.cta-option-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 24px 60px rgba(30, 58, 52, 0.12),
+    0 0 0 1px rgba(163, 198, 192, 0.4);
+}
+
+.cta-option-card.popular {
+  border-color: rgba(255, 158, 128, 0.4);
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--point-color), #ff7a50);
+  padding: 4px 18px;
+  border-radius: var(--radius-xl);
+}
+
+.option-price {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  line-height: 1;
+}
+
+.cta-option-card.popular .option-price {
+  background: linear-gradient(135deg, var(--point-color), #ff7a50);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.option-desc {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  color: rgba(30, 58, 52, 0.45);
+  letter-spacing: 0.05em;
+}
+
+/* CTA Button */
+.cta-button {
+  position: relative;
+  width: 100%;
+  padding: 16px 24px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--primary-color), #2a5249);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform 0.3s var(--ease-out-expo),
+              box-shadow 0.3s var(--ease-out-expo);
+}
+
+.cta-option-card.popular .cta-button {
+  background: linear-gradient(135deg, var(--point-color), #ff7a50);
+}
+
+.cta-button:hover {
+  box-shadow: 0 8px 30px rgba(30, 58, 52, 0.2);
+}
+
+.cta-button span {
+  position: relative;
+  z-index: 2;
+}
+
+.btn-glass-layer {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  filter: blur(20px);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cta-button:hover .btn-glass-layer {
+  opacity: 1;
+}
+
+/* Trust Badges */
+.cta-trust {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.trust-item {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  color: var(--primary-color);
+}
+
+.trust-divider {
+  color: rgba(30, 58, 52, 0.2);
+}
+
+/* Mobile */
+@media (max-width: 1024px) {
+  .cta-options {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .cta-section {
+    padding: var(--space-lg) var(--space-sm);
+  }
+
+  .cta-option-card {
+    padding: var(--space-md);
+  }
+}

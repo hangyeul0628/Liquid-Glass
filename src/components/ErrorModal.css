@@ -1,0 +1,212 @@
+/* 에러 모달 전용 배경 스크롤 방지 클래스 */
+body.error-modal-active {
+  overflow: hidden;
+}
+
+/* 모달 오버레이 */
+.error-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(8, 10, 15, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+/* 프리미엄 글래스모피즘 카드 */
+.error-modal-card.glass-card {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  background: rgba(18, 22, 33, 0.65);
+  border: 1px solid rgba(255, 74, 74, 0.25); /* 붉은색 경고 테두리 */
+  border-radius: 24px;
+  padding: 40px 32px 32px 32px;
+  color: #ffffff;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 
+              0 0 40px rgba(255, 74, 74, 0.08);
+  overflow: hidden;
+  text-align: center;
+}
+
+/* 에러 네온 글로우 */
+.error-glow {
+  position: absolute;
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255, 74, 74, 0.2) 0%, rgba(255, 74, 74, 0) 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 닫기 버튼 */
+.error-modal-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+}
+
+.error-modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  transform: rotate(90deg);
+}
+
+/* 헤더 영역 */
+.error-modal-header {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 24px;
+}
+
+.error-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 74, 74, 0.1);
+  border: 1px solid rgba(255, 74, 74, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px auto;
+  box-shadow: 0 0 20px rgba(255, 74, 74, 0.15);
+}
+
+.error-modal-title {
+  font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #ffffff 0%, #ffc5c5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.error-modal-subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.5;
+}
+
+/* 입력한 검색어 디스플레이 박스 */
+.error-search-box {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 74, 74, 0.04);
+  border: 1px solid rgba(255, 74, 74, 0.12);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 28px;
+  word-break: break-all;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.invalid-query {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ff5e5e;
+  text-shadow: 0 0 10px rgba(255, 94, 94, 0.2);
+}
+
+.error-desc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* 추천 검색어 */
+.recommend-section {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.recommend-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 12px;
+  padding-left: 4px;
+  border-left: 2px solid #ff4a4a;
+}
+
+.recommend-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.recommend-tag-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 30px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.recommend-tag-btn:hover {
+  background: rgba(255, 74, 74, 0.12);
+  border-color: rgba(255, 74, 74, 0.4);
+  color: #ff8e8e;
+  box-shadow: 0 0 15px rgba(255, 74, 74, 0.15);
+}
+
+/* 확인 버튼 */
+.error-confirm-btn {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  background: linear-gradient(135deg, #ff4a4a 0%, #dd2828 100%);
+  border: none;
+  border-radius: 14px;
+  padding: 16px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px -6px rgba(255, 74, 74, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.error-confirm-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -4px rgba(255, 74, 74, 0.5), 0 0 15px rgba(255, 74, 74, 0.2);
+  filter: brightness(1.1);
+}
+
+.error-confirm-btn:active {
+  transform: translateY(0);
+}

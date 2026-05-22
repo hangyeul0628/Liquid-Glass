@@ -1,0 +1,330 @@
+/* =========================================
+   SECTION 04: The Proof
+   ========================================= */
+.proof-section {
+  flex-direction: column;
+  background: var(--bg-color);
+  padding: var(--space-xl) var(--space-md);
+  min-height: auto;
+  gap: var(--space-xl);
+}
+
+.proof-header {
+  text-align: center;
+  max-width: 700px;
+}
+
+.proof-tag {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  margin-bottom: var(--space-sm);
+  padding: 6px 16px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+}
+
+.proof-headline {
+  margin-bottom: var(--space-sm);
+  line-height: 1.5;
+}
+
+.proof-highlight {
+  background: linear-gradient(135deg, var(--accent-color), var(--point-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.proof-sub-headline {
+  color: rgba(30, 58, 52, 0.5);
+  font-size: 1.05rem;
+}
+
+/* Content Layout */
+.proof-content {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--space-xl);
+  max-width: 1000px;
+  width: 100%;
+  align-items: start;
+}
+
+/* Cylinder Gauge */
+.proof-gauge-wrapper {
+  position: sticky;
+  top: 30vh;
+}
+
+.proof-cylinder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.cylinder-glass {
+  position: relative;
+  width: 80px;
+  height: 280px;
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(163, 198, 192, 0.3);
+  box-shadow:
+    0 10px 40px rgba(30, 58, 52, 0.08),
+    inset 0 -10px 20px rgba(163, 198, 192, 0.05);
+  overflow: hidden;
+}
+
+.cylinder-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    0deg,
+    var(--point-color) 0%,
+    rgba(255, 158, 128, 0.6) 60%,
+    rgba(163, 198, 192, 0.3) 100%
+  );
+  border-radius: 0 0 40px 40px;
+  transition: height 1.2s var(--ease-out-expo);
+}
+
+.cylinder-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  filter: blur(2px);
+}
+
+.cylinder-reflection {
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  width: 20%;
+  height: 40%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    transparent 100%
+  );
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.cylinder-value {
+  text-align: center;
+}
+
+.cylinder-number {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-color), var(--point-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.cylinder-unit {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--point-color);
+  margin-left: 2px;
+}
+
+.cylinder-label {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: rgba(30, 58, 52, 0.4);
+  text-transform: uppercase;
+}
+
+/* Review Cards */
+.proof-reviews {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.proof-review-card {
+  padding: var(--space-md) var(--space-md);
+  transition: transform 0.5s var(--ease-out-expo),
+              box-shadow 0.5s var(--ease-out-expo);
+}
+
+.proof-review-card.active {
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 60px rgba(30, 58, 52, 0.12),
+    0 0 0 1px rgba(163, 198, 192, 0.3);
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.author-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--accent-color), var(--point-color));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--white);
+  font-size: 1rem;
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.author-name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--primary-color);
+}
+
+.author-meta {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  color: rgba(30, 58, 52, 0.4);
+}
+
+.review-text {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: rgba(30, 58, 52, 0.7);
+  margin-bottom: var(--space-sm);
+}
+
+.review-gauge-mini {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.review-gauge-bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(30, 58, 52, 0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.review-gauge-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-color), var(--point-color));
+  border-radius: 2px;
+  transition: width 1.5s var(--ease-out-expo);
+}
+
+.review-gauge-label {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  color: var(--point-color);
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+/* Clinical Data Grid */
+.proof-clinical-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  max-width: 800px;
+  width: 100%;
+}
+
+.clinical-card {
+  text-align: center;
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.clinical-value {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+
+.clinical-value small {
+  font-size: 1rem;
+}
+
+.clinical-label {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  color: rgba(30, 58, 52, 0.5);
+  letter-spacing: 0.05em;
+}
+
+/* Mobile */
+@media (max-width: 1024px) {
+  .proof-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .proof-gauge-wrapper {
+    position: relative;
+    top: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .cylinder-glass {
+    width: 60px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .proof-section {
+    padding: var(--space-lg) var(--space-sm);
+  }
+
+  .proof-clinical-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  .clinical-card {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .clinical-value {
+    font-size: 2rem;
+  }
+}

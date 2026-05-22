@@ -1,0 +1,269 @@
+/* =========================================
+   SECTION: Best Seller
+   ========================================= */
+.bestseller-section {
+  flex-direction: column;
+  background-color: var(--white);
+  padding: var(--space-xl) var(--space-md);
+  min-height: auto;
+}
+
+.bestseller-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  max-width: 600px;
+}
+
+.bestseller-tag {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--point-color);
+  margin-bottom: var(--space-sm);
+  font-weight: 700;
+}
+
+.bestseller-headline {
+  color: var(--primary-color);
+  margin-bottom: var(--space-sm);
+  font-size: 2.5rem;
+}
+
+.bestseller-sub {
+  color: rgba(30, 58, 52, 0.6);
+  margin: 0 auto;
+}
+
+/* Grid Layout */
+.bestseller-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  max-width: 1200px;
+  width: 100%;
+}
+
+.bestseller-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.4s var(--ease-out-expo),
+              box-shadow 0.4s var(--ease-out-expo);
+  background: var(--bg-color); /* PRD 맑은 배경 */
+}
+
+.bestseller-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(30, 58, 52, 0.1);
+}
+
+/* Image & Hover Layer */
+.bestseller-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  background-color: #E2E8E6;
+  overflow: hidden;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, #E2E8E6 0%, #F4F7F6 100%);
+}
+
+.placeholder-text {
+  font-size: 0.85rem;
+  color: rgba(30, 58, 52, 0.4);
+  font-family: var(--font-heading);
+}
+
+.bestseller-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1);
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 기본적으로 호버용 이미지는 투명도가 0 */
+.hover-img {
+  opacity: 0;
+}
+
+/* 정적 상태의 기본 이미지 */
+.default-img {
+  opacity: 1;
+}
+
+/* 카드 호버 시 호버용 이미지가 페이드 인되고 기본 이미지는 페이드 아웃 */
+.bestseller-card:hover .hover-img {
+  opacity: 1;
+  transform: scale(1.04); /* 호버 시 약간 줌인 효과 */
+}
+
+.bestseller-card:hover .default-img {
+  opacity: 0;
+  transform: scale(1.02);
+}
+
+.bestseller-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  z-index: 2;
+}
+
+.bestseller-hover-layer {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s var(--ease-out-expo);
+  z-index: 3;
+}
+
+.bestseller-card:hover .bestseller-hover-layer {
+  opacity: 1;
+  visibility: visible;
+}
+
+.btn-action {
+  width: 70%;
+  padding: 12px 0;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: 1px solid var(--primary-color);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  transform: translateY(10px);
+}
+
+.btn-action.outline {
+  background-color: transparent;
+  color: var(--primary-color);
+}
+
+.bestseller-card:hover .btn-action {
+  transform: translateY(0);
+}
+
+.bestseller-card:hover .btn-action:nth-child(2) {
+  transition-delay: 0.05s;
+}
+
+.btn-action:hover {
+  background-color: var(--point-color);
+  border-color: var(--point-color);
+  color: var(--white);
+}
+
+/* Info */
+.bestseller-info {
+  padding: var(--space-md);
+  text-align: center;
+}
+
+.bestseller-name {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+
+.bestseller-desc {
+  font-size: 0.85rem;
+  color: rgba(30, 58, 52, 0.6);
+  margin-bottom: 16px;
+  min-height: 2.5rem;
+}
+
+.bestseller-price {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.bestseller-discount {
+  color: #ff685c; /* 우아한 코랄 피치 톤 할인율 */
+  font-weight: 800;
+}
+
+/* Footer Button */
+.bestseller-footer {
+  margin-top: var(--space-xl);
+  text-align: center;
+}
+
+.bestseller-more-btn {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.bestseller-more-btn:hover {
+  color: var(--point-color);
+  border-color: var(--point-color);
+}
+
+.arrow-right {
+  transition: transform 0.3s ease;
+}
+
+.bestseller-more-btn:hover .arrow-right {
+  transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .bestseller-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .bestseller-section {
+    padding: var(--space-lg) var(--space-sm);
+  }
+  
+  .bestseller-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+}

@@ -1,0 +1,483 @@
+/* ==========================================
+   Re:Glass Premium Cart Modal (Glassmorphism)
+   ========================================== */
+
+/* 1. Backdrop overlay */
+.cart-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cart-backdrop-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 25, 22, 0.25); /* 옥빛 스킨 테마와 융합되는 은은한 딥그린 어둠 */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* 2. Modal Container (Glass Box) */
+.cart-modal-box.glass-card {
+  position: relative;
+  width: 90%;
+  max-width: 480px;
+  max-height: 85vh;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 28px;
+  box-shadow: 
+    0 24px 70px rgba(118, 171, 161, 0.2), 
+    inset 0 0 20px rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  backdrop-filter: blur(35px);
+  -webkit-backdrop-filter: blur(35px);
+  z-index: 2010;
+}
+
+/* 3. Header Styling */
+.cart-header {
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.cart-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #1a3530;
+}
+
+.cart-title-group svg {
+  color: #4a9f90; /* 옥빛 브랜드 메인 컬러 */
+  stroke-width: 2.2px;
+}
+
+.cart-title-group h2 {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin: 0;
+  background: linear-gradient(135deg, #1a3530 0%, #4a9f90 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cart-close-btn {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4c625e;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.cart-close-btn:hover {
+  transform: rotate(90deg);
+  background: #ff7e73;
+  border-color: #ff7e73;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(255, 126, 115, 0.3);
+}
+
+/* 4. Body Content Styling */
+.cart-body {
+  padding: 24px 28px;
+  overflow-y: auto;
+  flex: 1;
+  /* 스크롤바 디자인 */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(74, 159, 144, 0.3) transparent;
+}
+
+.cart-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cart-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cart-body::-webkit-scrollbar-thumb {
+  background: rgba(74, 159, 144, 0.3);
+  border-radius: 10px;
+}
+
+.cart-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(74, 159, 144, 0.5);
+}
+
+/* Empty State */
+.cart-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.empty-icon {
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 8px 16px rgba(118, 171, 161, 0.25));
+  animation: floatIcon 3s ease-in-out infinite;
+}
+
+.empty-cart-svg {
+  display: block;
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.cart-empty-state:hover .empty-cart-svg {
+  transform: scale(1.1) rotate(-4deg);
+  filter: drop-shadow(0 12px 28px rgba(74, 159, 144, 0.35));
+}
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.cart-empty-state p {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1a3530;
+  margin: 0 0 8px 0;
+}
+
+.cart-empty-state span {
+  font-size: 0.85rem;
+  color: #6d8580;
+}
+
+/* Cart Item List */
+.cart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cart-item {
+  display: flex;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 16px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.cart-item:hover {
+  background: rgba(255, 255, 255, 0.55);
+  transform: translateY(-2px);
+  border-color: rgba(74, 159, 144, 0.3);
+  box-shadow: 0 8px 24px rgba(118, 171, 161, 0.08);
+}
+
+.cart-item-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: #ffffff;
+}
+
+.cart-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cart-item-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a3530;
+  line-height: 1.4;
+  margin: 0;
+  word-break: keep-all;
+}
+
+.cart-item-prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.cart-item-price {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a3530;
+}
+
+.cart-item-original {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  color: #9ab4af;
+  text-decoration: line-through;
+}
+
+/* Item Action Area (qty & delete) */
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+.qty-selector {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(74, 159, 144, 0.2);
+  border-radius: 10px;
+  padding: 2px;
+}
+
+.qty-selector button {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  color: #1a3530;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.qty-selector button:hover:not(:disabled) {
+  background: rgba(74, 159, 144, 0.15);
+  color: #4a9f90;
+}
+
+.qty-selector button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.qty-selector span {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  width: 28px;
+  text-align: center;
+  color: #1a3530;
+}
+
+.item-remove-btn {
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #7d9692;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.item-remove-btn:hover {
+  color: #ff685c;
+  background: rgba(255, 104, 92, 0.08);
+}
+
+.item-remove-btn svg {
+  stroke-width: 2.2px;
+}
+
+/* 5. Footer Summary Styling */
+.cart-footer {
+  padding: 24px 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.88rem;
+  color: #5c7571;
+}
+
+.summary-row .shipping-hint {
+  font-size: 0.75rem;
+  color: #4a9f90;
+  font-weight: 500;
+}
+
+.summary-row .value {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  color: #1a3530;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px dashed rgba(74, 159, 144, 0.2);
+  margin-top: 4px;
+}
+
+.summary-total span {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a3530;
+}
+
+.summary-total .total-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ff685c; /* 우아한 코랄 핑크 피치 톤 강조 */
+  text-shadow: 0 2px 4px rgba(255, 104, 92, 0.1);
+}
+
+/* Premium Checkout Button */
+.btn-checkout {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #ff7e73 0%, #ff5263 100%);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(255, 82, 99, 0.35);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-checkout:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(255, 82, 99, 0.5);
+  background: linear-gradient(135deg, #ff8e84 0%, #ff6373 100%);
+}
+
+.btn-checkout:active {
+  transform: translateY(0);
+}
+
+/* 6. Premium Glassmorphic Cart Toast Popup */
+.cart-toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 360px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 
+    0 16px 40px rgba(74, 159, 144, 0.18),
+    inset 0 0 10px rgba(255, 255, 255, 0.5);
+  z-index: 2500;
+  overflow: hidden;
+}
+
+.toast-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(118, 171, 161, 0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.toast-thumbnail {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.toast-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.toast-tag {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #4a9f90;
+  letter-spacing: 0.08em;
+}
+
+.toast-msg {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1a3530;
+  margin: 0;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+
+.toast-badge-check {
+  width: 22px;
+  height: 22px;
+  background: #4a9f90;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(74, 159, 144, 0.3);
+}
